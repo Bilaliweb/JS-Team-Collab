@@ -53,9 +53,4 @@ app.use('/hook', hookRoute);
 const hookedRoute = require(process.env.REQ_HOOKED);
 app.use('/hooked', hookedRoute);
 
-// app.get('/', function (req, res) {
-// We used Thunder Client for API Testing...
-
-     //      res.send('Hello World');     
-     
-     // })
+///////////////// Server Completed /////////////////
