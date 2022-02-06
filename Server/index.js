@@ -1,8 +1,6 @@
 var express = require('express');
-var app = express();
-app.use(express.json())
 const { Sequelize } = require('sequelize');
-const { tasks, members } = require('./models');
+const { tasks, members, labels, invoices, attachments } = require('./models');
 const bodyParser = require("body-parser");
 const sequelize = new Sequelize('Bilal', 'postgres', 'PostgreSql14', {
      host: 'localhost',
@@ -12,15 +10,19 @@ try {
      sequelize.authenticate();
      console.log('Connection has been established successfully.');
      console.log(`You can see output at "http://localhost:8080"`);
+     console.log(`All set with database(PostgreSql)...`);
 } catch (error) {
      console.error('Unable to connect to the database:', error);
 }
 
+var app = express();
+app.use(express.json())
 
-// We used Thunder Client for API Testing.
+// We used Thunder Client for API Testing...
 
 app.get('/', function (req, res) {
      res.send('Hello World');
+
 })
 
 // app.get('/About', function (req, res) {
@@ -31,30 +33,66 @@ app.get('/', function (req, res) {
 // Read operation: 
 
 app.get('/api', async function (req, res) {
-     let task = await tasks.findAll();
-     return res.send(task)
+     console.log("Fethcing all data from pg_db...");
+     let find = await (tasks).findAll();
+     return res.send(find);
 })
 
 
 // Create operation
 
-app.post('/api', async function (req, res) {
+app.post('/api/task/create', async function (req, res) {
+     console.log("Creating new entry...");
      const { task_name, description, actual_hour, estimated_hour, invoiceId } = req.body
      let task = await tasks.create({ task_name, description, actual_hour, estimated_hour, invoiceId });
+     console.log("New task created ✔ ");
+     return res.send(task);
+})
 
-     return res.send(task)
+app.post('/api/members/create', async function (req, res) {
+     console.log("Creating new entry...");
+     const { name, task_id } = req.body
+     let member = await members.create({ name, task_id });
+     console.log("New member added ✔ ");
+     return res.send(member);
+})
+
+app.post('/api/labels/create', async function (req, res) {
+     console.log("Creating new entry...");
+     const { title, task_id } = req.body
+     const label = await labels.create({ title, task_id });
+     console.log("New label added ✔ ");
+     return res.send(label);
+})
+
+app.post('/api/attachments/create', async function (req, res) {
+     console.log("Creating new entry...");
+     const { title } = req.body
+     let attachment = await attachments.create({ title });
+     console.log("New attachment added ✔ ");
+     return res.send(attachment);
+})
+
+app.post('/api/invoices/create', async function (req, res) {
+     console.log("Creating new entry...");
+     const { billable_hours, description } = req.body
+     let invoice = await invoices.create({ billable_hours, description });
+     console.log("New invoice added ✔ ");
+     return res.send(invoice);
 })
 
 
 // Update Operation
 
-app.put('/api', async function (req, res) {
-     const { task_name } = req.body
-     let update = await tasks.update({ task_name: " " }, {
+app.put('/api/:id', async function (req, res) {
+     const { task_name } = req.body;
+     const id = req.params.id;
+     let update = await tasks.update({ task_name }, {
           where: {
-               task_name: "test"
+               id
           }
      });
+     console.log("Updated pg_db ✔");
 
      return res.send(update);
 },
@@ -71,8 +109,9 @@ app.delete('/api/:id', async function (req, res) {
                id
           }
      });
+     console.log("Item deleted ✔");
 
-     return res.send("deletd");
+     return res.send("deleted");
 },
 )
 

@@ -2,8 +2,8 @@ import { BasicTables } from '/src/components/BasicTable'
 
 //For Fetching ------------------------------
 export const getServerSideProps = async () => {
-  const res = await fetch('http://localhost:8080/api');
-  const data = await res.json();
+  var res = await fetch('http://localhost:8080/api');
+  var data = await res.json();
 
   return {
     props: { data }
