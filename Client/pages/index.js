@@ -10,6 +10,7 @@ export const getServerSideProps = async () => {
     props: { data }
   }
 
+
 }
 //For Fetching ------------------------------
 
