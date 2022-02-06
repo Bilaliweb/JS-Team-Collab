@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'cye':'#BAA333',
+        'cye': '#BAA333',
         'white': '#ffffff',
         'purple': '#3f3cbb',
         'midnight': '#121063',
@@ -22,3 +22,4 @@ module.exports = {
   },
   plugins: [],
 }
+
