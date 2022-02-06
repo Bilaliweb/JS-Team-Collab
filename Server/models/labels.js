@@ -25,3 +25,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   return Labels;
 };
+
+
+////////// Labels Done //////////

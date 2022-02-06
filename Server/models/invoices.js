@@ -25,3 +25,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   return invoices;
 };
+
+
+//////////// Invoices Done ////////////

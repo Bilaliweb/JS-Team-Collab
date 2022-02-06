@@ -36,4 +36,4 @@ module.exports = (sequelize, DataTypes) => {
 
 
 
-
+//////////// Tasks Done ////////////
