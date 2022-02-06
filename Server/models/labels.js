@@ -14,8 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Labels.init({
-    title: DataTypes.STRING,
-    task_id: DataTypes.INTEGER
+    title: DataTypes.STRING
   },
     {
       sequelize,

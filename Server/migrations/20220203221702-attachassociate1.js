@@ -4,11 +4,11 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     return queryInterface.addColumn(
       'attachments', // name of Target model
-      'attId', // name of the key we're adding
+      'taskId', // name of the key we're adding
       {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Tasks', // name of Source model
+          model: 'tasks', // name of Source model
           key: 'id',
         },
         onUpdate: 'CASCADE',
@@ -20,6 +20,6 @@ module.exports = {
 
 
   async down(queryInterface, Sequelize) {
-    return queryInterface.removeColumn('attachments', 'attId');
+    return queryInterface.removeColumn('attachments', 'taskId');
   }
 };

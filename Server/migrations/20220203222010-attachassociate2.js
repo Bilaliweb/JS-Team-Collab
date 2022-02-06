@@ -20,7 +20,7 @@ module.exports = {
     ).then(() => {
       return queryInterface.addColumn(
         'attachments', // name of Target model
-        'attId', // name of the key we're adding
+        'taskId', // name of the key we're adding
         {
           type: Sequelize.INTEGER,
           references: {
@@ -52,7 +52,7 @@ module.exports = {
 
   async down(queryInterface, Sequelize) {
     return queryInterface.removeColumn('Labels', 'taskId').then(() => {
-      return queryInterface.removeColumn('attachments', 'attId').then(() => { return queryInterface.removeColumn('tasks', 'invoiceId'); });
+      return queryInterface.removeColumn('attachments', 'taskId').then(() => { return queryInterface.removeColumn('tasks', 'invoiceId'); });
     });
   }
 };
