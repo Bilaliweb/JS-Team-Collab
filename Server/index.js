@@ -21,6 +21,8 @@ var app = express();
 app.use(express.json());
 app.use(cors());
 
+console.log(`For apidocs visit "docs" endpoint.`);
+app.use('/docs', express.static('../docs'));
 
 // For Tasks...
 const taskRoute = require(process.env.REQ_TASK);
