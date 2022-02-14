@@ -48,8 +48,6 @@ module.exports = {
     })
   },
 
-
-
   async down(queryInterface, Sequelize) {
     return queryInterface.removeColumn('Labels', 'taskId').then(() => {
       return queryInterface.removeColumn('attachments', 'taskId').then(() => { return queryInterface.removeColumn('tasks', 'invoiceId'); });
