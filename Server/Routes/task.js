@@ -208,6 +208,7 @@ router.put('/:id', async function (req, res) {
           where: {
                id
           }
+          
      });
      console.log(update);
      if (update) {
