@@ -1,7 +1,7 @@
 require('dotenv').config();
+const cors = require('cors');
 var express = require('express');
 const { Sequelize } = require('sequelize');
-// const { tasks, members, Labels, invoices, attachments } = require('./models');
 const bodyParser = require("body-parser");
 const port = process.env.port;
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
@@ -18,7 +18,9 @@ try {
 }
 
 var app = express();
-app.use(express.json())
+app.use(express.json());
+app.use(cors());
+
 
 // For Tasks...
 const taskRoute = require(process.env.REQ_TASK);
@@ -40,6 +42,7 @@ app.use('/invoices', invoiceRoute);
 const attachRoute = require(process.env.REQ_ATTACHMENT);
 app.use('/attachments', attachRoute);
 
+/////////////////////////////////////////////////
 
 // TRELLO TASK
 app.use(bodyParser.json());
