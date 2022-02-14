@@ -40,6 +40,13 @@ router.get('/', async function (req, res) {
  *  }
  * ]
  * 
+ *  @apiError IdNotFound The specific id was not found.
+ * 
+ *  @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ * {
+ *     error: "Sorry, such an id doesn't exist."
+ * }
  * 
  *  @api  {get} /invoices   Get all invoices
  *  @apiName   GetInvoices
@@ -161,6 +168,13 @@ router.post('/create', async function (req, res) {
  * "updatedAt": "2022-02-12T16:25:30.018Z"
  * }
  * 
+ *  @apiError IdNotFound The specific id was not found.
+ * 
+ *  @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ * {
+ *     error: "Sorry, such an id doesn't exist."
+ * }
  */
 
 router.put('/:id', async function (req, res) {
@@ -205,6 +219,13 @@ router.put('/:id', async function (req, res) {
  * 
  *     "Invoice 16 deleted."
  * 
+ *  @apiError IdNotFound The specific id was not found.
+ * 
+ *  @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ * {
+ *     error: "Sorry, such an id doesn't exist."
+ * }
  */
 
 router.delete('/:id', async function (req, res) {
