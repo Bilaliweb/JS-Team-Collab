@@ -66,6 +66,14 @@ router.get('/', async function (req, res) {
  *   "taskId": null
  *  }
  * ]
+ * 
+ *  @apiError IdNotFound The specific id was not found.
+ * 
+ *  @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ * {
+ *     error: "Sorry, such an id doesn't exist."
+ * }
  */
 
 router.get("/:id", async function (req, res) {
@@ -131,7 +139,8 @@ router.post('/create', async function (req, res) {
      return res.send(attachment);
 })
 
-// // Update Operation
+///// Update Operation
+
 /**
  *  @api  {put} /attachments/:id    Update existing Attachment
  *  @apiName   CreateAttachment
@@ -164,6 +173,13 @@ router.post('/create', async function (req, res) {
  *  "taskId": 35
  * }
  * 
+ *  @apiError IdNotFound The specific id was not found.
+ * 
+ *  @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ * {
+ *     error: "Sorry, such an id doesn't exist."
+ * }
  */
 
 router.put('/:id', async function (req, res) {
@@ -211,6 +227,13 @@ router.put('/:id', async function (req, res) {
  *   
  *    "Attachment 7 deleted."
  * 
+ *  @apiError IdNotFound The specific id was not found.
+ * 
+ *  @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ * {
+ *     error: "Sorry, such an id doesn't exist."
+ * }
  */
 
 router.delete('/:id', async function (req, res) {
