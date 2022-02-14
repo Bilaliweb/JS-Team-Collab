@@ -5,9 +5,8 @@ import { COLUMN_MEMBERS } from "./column_member"
 import { COLUMN_LABELS } from "./column_label"
 import { COLUMN_INVOICES } from "./column_invoice"
 import { COLUMN_ATTACHMENTS } from "./column_attachments"
-import MOCK_DATA from "/src/components/MOCK_DATA.json"
-let headers = [COLUMNS, COLUMN_MEMBERS, COLUMN_LABELS, COLUMN_INVOICES, COLUMN_ATTACHMENTS]
 
+let headers = [COLUMNS, COLUMN_MEMBERS, COLUMN_LABELS, COLUMN_INVOICES, COLUMN_ATTACHMENTS]
 
 export const BasicTables = (props) => {
 
@@ -51,7 +50,7 @@ export const BasicTables = (props) => {
                     return (
                         <tr {...row.getRowProps()}>
                             {row.cells.map(cell => {
-                                return <td className="p-8" {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                return <td  {...cell.getCellProps()}>{cell.render('Cell')}</td>
                             })}
                         </tr>
                     )
