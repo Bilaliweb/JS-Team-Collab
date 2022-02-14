@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
 
   }
+
   invoices.init({
     billable_hours: DataTypes.FLOAT,
     description: DataTypes.STRING
